@@ -103,7 +103,7 @@
             const list = this.$store.getters['category/getCategory']
             this.data.ru.posts = list.ru
             this.data.ua.posts = list.ua
-
+            
             const total = this.$store.getters['category/getTotal']
             this.data.ru.total = total.ru
             this.data.ua.total = total.ua

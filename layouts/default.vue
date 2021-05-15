@@ -81,7 +81,6 @@
                     const email = this.email
                     const password = this.password
                     const result =  await DAL_Login.checkLogin(email, password)
-                   
                     if(result.data.confirm === 'ok') {
                         this.$store.dispatch('user/setUser', {
                             id: result.data.data.id,

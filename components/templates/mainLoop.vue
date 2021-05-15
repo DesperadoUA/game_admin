@@ -44,21 +44,16 @@
 </template>
 
 <script>
+    const IMG_SRC = 'http://game-admin/img/'
     export default {
         name: "mainLoop",
         data(){
             return {
                 cards: [
-                    {title: 'Static Pages', thumbnail: 'http://nuxt-slot-admin/img/static-page.jpg', link: '/admin/static-pages'},
-                    {title: 'Casino', thumbnail: 'http://nuxt-slot-admin/img/casino.png', link: '/admin/casino'},
-                    {title: 'Blog', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/blog'},
-                    {title: 'Vendors', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/vendors'},
-                    {title: 'Slots', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/slots'},
-                    {title: 'Payments', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/payments'},
-                    {title: 'Bonuses', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/bonuses'},
-                    {title: 'Category', thumbnail: 'http://nuxt-slot-admin/img/category.png', link: '/admin/category'},
-                    {title: 'Settings', thumbnail: 'http://nuxt-slot-admin/img/settings.jpg', link: '/admin/settings'},
-                    {title: 'Options', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/options'},
+                    {title: 'Static Pages', thumbnail: `${IMG_SRC}static-page.jpg`, link: '/admin/static-pages'},
+                    {title: 'Category', thumbnail: `${IMG_SRC}category.png`, link: '/admin/category'},
+                    {title: 'Settings', thumbnail: `${IMG_SRC}settings.jpg`, link: '/admin/settings'},
+                    {title: 'Options', thumbnail: `${IMG_SRC}options.jpg`, link: '/admin/options'},
                 ]
             }
         },
