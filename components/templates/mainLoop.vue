@@ -54,6 +54,8 @@
                     {title: 'Category', thumbnail: `${IMG_SRC}category.png`, link: '/admin/category'},
                     {title: 'Settings', thumbnail: `${IMG_SRC}settings.jpg`, link: '/admin/settings'},
                     {title: 'Options', thumbnail: `${IMG_SRC}options.jpg`, link: '/admin/options'},
+                    {title: 'Emulators', thumbnail: `${IMG_SRC}options.jpg`, link: '/admin/emulator'},
+                    {title: 'Romes', thumbnail: `${IMG_SRC}options.jpg`, link: '/admin/rome'},
                 ]
             }
         },

@@ -3,7 +3,7 @@
     <v-container class="container--fluid">
       <v-row>
         <v-col class="offset-1 col-10 mt-10">
-          <h1 class="page_title font-podkova-bold">Casino</h1>
+          <h1 class="page_title font-podkova-bold">{{POST_TYPE}}</h1>
         </v-col>
       </v-row>
       <v-row>
@@ -43,6 +43,7 @@
                 <v-card >
                   <v-card-text class="black">
                     <div v-if="tab == 'tab-2'">
+                      <Search :postType="POST_TYPE" :lang="'2'" />
                       <CategoryLoop :data="postsUa" />
                       <TotalPosts :data="data.ua.total" />
                       <MM_Paginations :length = "Math.ceil(data.ua.total/numnerPostOnPage)"
@@ -53,6 +54,7 @@
                        />
                     </div>
                     <div v-else>
+                      <Search :postType="POST_TYPE" :lang="'1'" />
                       <CategoryLoop :data="postsRu" />
                       <TotalPosts :data="data.ru.total" />
                       <MM_Paginations :length = "Math.ceil(data.ru.total/numnerPostOnPage)" 
@@ -74,13 +76,14 @@
 </template>
 
 <script>
-   import CategoryLoop from '../../../components/templates/categoryLoop'
-   import TotalPosts from '../../../components/templates/totalPosts'
-   import MM_Paginations from '../../../components/lib/MM_Paginations'
+   import CategoryLoop from '~/components/templates/categoryLoop'
+   import TotalPosts from '~/components/templates/totalPosts'
+   import MM_Paginations from '~/components/lib/MM_Paginations'
+   import Search from '~/components/templates/search.vue'
     export default {
-        name: "casino",
+        name: "emulator",
         layout: 'admin',
-        component: {CategoryLoop, TotalPosts, MM_Paginations},
+        component: {CategoryLoop, TotalPosts, MM_Paginations, Search},
         async mounted() {
             this.data.ru.posts = []
             this.data.ua.posts = []
@@ -113,16 +116,16 @@
         },
         data(){
           return {
-              POST_TYPE: 'casino',
+              POST_TYPE: 'emulator',
               data: {
                   ru: {
-                      post_slug: 'casino',
+                      post_slug: 'emulator',
                       lang: 'ru',
                       posts: [],
                       total: 0
                   },
                   ua: {
-                      post_slug: 'casino',
+                      post_slug: 'emulator',
                       lang: 'ua',
                       posts: [],
                       total: 0

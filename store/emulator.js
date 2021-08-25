@@ -1,5 +1,5 @@
-import DAL from '../DAL/casino'
-const POST_TYPE = 'casino'
+import DAL from '../DAL/emulator'
+const POST_TYPE = 'emulator'
 export const state = () => ({
     [POST_TYPE]: {
         currentPage: {},

@@ -14,11 +14,11 @@
                 </div>
                 <div class="col-lg-3 col-xs-12">
                   <input type="file"
-                         id="file"
+                         :id="action_key"
                          class="mm_input margin_bottom_15 inputFile"
-                         ref="file"
+                         :ref="action_key"
                          @change="selectFile()"
-                  > <label for="file" class="mt-7">Choose a file ...</label>
+                  > <label :for="action_key" class="mt-7">Choose a file ...</label>
                 </div>
               </v-row>
             </v-expansion-panel-content>
@@ -30,48 +30,47 @@
 </template>
 
 <script>
-    import axios from 'axios'
-    import config from '../../DAL/config'
-    export default {
-        name: "MM_Image",
-        props: ['value', 'title', 'action', 'action_key'],
-        methods:{
-            async selectFile(){
-              const file = this.$refs.file.files[0]
-              console.log(this.$refs.file.files)
-              if(file) {
-                  const reader = new FileReader();
-                  reader.onloadend = async () => {
-                    const user = this.$store.getters['user/getUser']
-                    const data = {
-                        session: user.session,
-                        id: user.id,
-                        file: {
-                          name: file.name,
-                          base64: reader.result
-                        }
-                    }
-                    const result = await axios.post(config.API_URL+'admin/uploads', data)
-                    this.current_value = result.data.src   
-                    const obj = {
-                      key: this.action_key,
-                      value: this.current_value
-                    }
-                    this.$store.dispatch(this.action, obj)    
-                  }
-                  reader.readAsDataURL(file);
-              }
-            }
-        },
-        data(){
-            return {
-                  current_value: ''
-              }
-            },
-        mounted(){
-              this.current_value = this.value
-            }
-    }
+	import axios from 'axios'
+	import config from '~/DAL/config'
+	export default {
+		name: "MM_Image",
+		props: ['value', 'title', 'action', 'action_key'],
+		methods:{
+			async selectFile(){
+				const file = this.$refs[this.action_key].files[0]
+				if(file) {
+					const reader = new FileReader();
+					reader.onloadend = async () => {
+						const user = this.$store.getters['user/getUser']
+						const data = {
+							session: user.session,
+							id: user.id,
+							file: {
+								name: file.name,
+								base64: reader.result
+							}
+						}
+						const result = await axios.post(config.API_URL+'admin/uploads', data)
+						this.current_value = result.data.src
+						const obj = {
+							key: this.action_key,
+							value: this.current_value
+						}
+						this.$store.dispatch(this.action, obj)
+					}
+					reader.readAsDataURL(file);
+				}
+			}
+		},
+		data(){
+			return {
+				current_value: ''
+			}
+		},
+		mounted(){
+			this.current_value = this.value
+		}
+	}
 </script>
 
 <style>

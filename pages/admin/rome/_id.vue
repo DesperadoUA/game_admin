@@ -8,6 +8,10 @@
                      :data = "data.body"
                      :action = 'POST_TYPE + "/changeStateCurrentPost"'>
     </postMeta>
+    <postRelative v-if='data.body' 
+                     :data = "data.body"
+                     :action = 'POST_TYPE + "/changeStateCurrentPost"'>
+    </postRelative>
     <v-container>
         <v-row>
           <v-col class="offset-1 col-10 mt-5 mb-10">
@@ -38,13 +42,14 @@
 </template>
 
 <script>
-import commonEdit from '../../../components/templates/commonEdit.vue'
-import postMeta from '../../../components/templates/adminCasinoMeta'
-import snackeBar from '../../../components/templates/snackbar'
+import commonEdit from '~/components/templates/commonEdit'
+import postMeta from '~/components/templates/adminRomesMeta'
+import snackeBar from '~/components/templates/snackbar'
+import postRelative from '~/components/templates/relative/Rome'
     export default {
-        name: "singleCasinoPage",
+        name: "singleRomsPage",
         layout: 'admin',
-        components: {commonEdit, postMeta, snackeBar},
+        components: {commonEdit, postMeta, snackeBar, postRelative},
         async mounted() {
             const user = this.$store.getters['user/getUser']
             const data = {
@@ -57,7 +62,7 @@ import snackeBar from '../../../components/templates/snackbar'
         },
         data(){
           return {
-              POST_TYPE: 'casino',
+              POST_TYPE: 'rome',
               data:{
                 body: undefined
               },
